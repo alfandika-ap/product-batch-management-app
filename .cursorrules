@@ -1,0 +1,110 @@
+# Carabao Product Management APP - Product Authentication System
+
+## Project Overview
+
+This is a React Vite App for product authentication using advanced QR-code and serial number technology. The system allows users to verify product authenticity by scanning QR codes and entering PIN codes.
+
+## Tech Stack
+
+### Frontend Framework
+
+- **React 19.1.0** - Modern React with latest features
+- **TypeScript 5.8.3** - Static type checking for better development experience
+- **Vite 6.3.5** - Fast build tool and development server
+
+### UI & Styling
+
+- **Tailwind CSS 4.1.8** - Utility-first CSS framework
+- **shadcn/ui** - High-quality, accessible UI components
+- **Radix UI** - Unstyled, accessible UI primitives
+- **Lucide React** - Beautiful & consistent icon library
+- **Class Variance Authority (CVA)** - Component variant management
+
+### Development Tools
+
+- **ESLint 9.25.0** - Code linting and quality enforcement
+- **TypeScript ESLint** - TypeScript-specific linting rules
+- **Bun** - Fast package manager and runtime
+
+### Package Manager
+
+- **Bun** - Primary package manager (evidenced by bun.lock)
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+│   └── ui/        # shadcn/ui components
+├── lib/           # Utility functions and configurations
+├── hooks/         # Custom React hooks
+├── assets/        # Static assets
+└── App.tsx        # Main application component
+```
+
+## Development Guidelines
+
+### Code Style
+
+- Use TypeScript for all new code
+- Follow ESLint rules configured in the project
+- Use functional components with hooks
+- Implement proper TypeScript types for all props and functions
+
+### Component Development
+
+- Use shadcn/ui components when possible
+- Follow the established component structure in `/components/ui/`
+- Use Tailwind CSS for styling
+- Implement responsive design patterns
+- Ensure accessibility standards are met
+
+### Import Conventions
+
+- Use path aliases: `@/` for src directory
+- Group imports: external libraries first, then internal modules
+- Use named imports when possible
+
+### File Naming
+
+- Use kebab-case for component files (e.g., `product-auth.tsx`)
+- Use kebab-case for utility files (e.g., `auth-utils.ts`)
+- Use kebab-case for CSS files (e.g., `product-auth.css`)
+
+### State Management
+
+- Use React hooks for local state
+- Consider context for global state if needed
+- Implement proper error handling and loading states
+
+### QR Code & Authentication Features
+
+- Ensure QR code scanning is optimized for mobile devices
+- Implement proper validation for serial numbers and PIN codes
+- Handle authentication errors gracefully
+- Provide clear user feedback for authentication status
+
+## Development Commands
+
+```bash
+# Start development server
+bun dev
+
+# Build for production
+bun run build
+
+# Run linting
+bun run lint
+
+# Preview production build
+bun run preview
+```
+
+## Best Practices
+
+1. **Performance**: Optimize for mobile devices and slow networks
+2. **Security**: Validate all user inputs, especially authentication data
+3. **Accessibility**: Ensure the app is usable by screen readers and keyboard navigation
+4. **Mobile-First**: Design and develop with mobile devices as the primary target
+5. **Error Handling**: Implement comprehensive error boundaries and user feedback
+6. **Testing**: Write unit tests for critical authentication logic

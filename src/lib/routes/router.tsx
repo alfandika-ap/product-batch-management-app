@@ -5,6 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "@/components/layouts/dashboard-layout";
 import ProductDetailPage from "@/pages/dashboard/product-detail/page";
 import BatchDetailPage from "@/pages/dashboard/product-detail/batch-detail/page";
+import ScanPage from "@/pages/scan";
 
 export const router = createBrowserRouter([
   {
@@ -41,5 +42,9 @@ export const router = createBrowserRouter([
       },
       // Add more protected routes here
     ],
+  },
+  {
+    path: "/scan",
+    element: <ScanPage />,
   },
 ]);

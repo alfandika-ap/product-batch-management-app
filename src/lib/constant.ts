@@ -19,3 +19,7 @@ export const API_BATCH_ROUTES = {
   UPDATE_BATCH: "/batches/:id",
   DELETE_BATCH: "/batches/:id",
 }
+
+export const API_PRODUCT_SCAN_ROUTES = {
+  POST_PRODUCT_SCAN: "/scan/"
+}

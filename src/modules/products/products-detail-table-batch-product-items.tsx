@@ -13,6 +13,7 @@ import type { BatchProductItem } from "@/types/batch.types";
 import { AlertCircle, Download } from "lucide-react";
 import { useState } from "react";
 import { useGetBatchProductItems } from "./hooks/use-batch";
+import ModalQrDetail from "./components/modal-qr-detail";
 
 function ProductsDetailTableBatchProductItems({
   batchId,
@@ -37,20 +38,20 @@ function ProductsDetailTableBatchProductItems({
     {
       key: "qrCode",
       header: "QR Code",
-      className: "min-w-[200px]",
+      className: "w-32 h-32",
       cell: (batch) => (
         <div className="truncate" title={batch.qrCode}>
-          {batch.qrCode}
+          <ModalQrDetail
+            trigger={
+              <img
+                src={batch.qrCode}
+                alt="QR Code"
+                className="w-20 h-20 cursor-pointer"
+              />
+            }
+            qrCode={batch.qrCode}
+          />
         </div>
-      ),
-    },
-    {
-      key: "status",
-      header: "Status",
-      cell: (batch) => (
-        <span className="inline-flex items-center rounded-md border bg-secondary text-secondary-foreground px-2.5 py-0.5 text-xs font-semibold capitalize">
-          {batch.status}
-        </span>
       ),
     },
     {
@@ -63,6 +64,16 @@ function ProductsDetailTableBatchProductItems({
         </div>
       ),
     },
+    {
+      key: "status",
+      header: "Status",
+      cell: (batch) => (
+        <span className="inline-flex items-center rounded-md border bg-secondary text-secondary-foreground px-2.5 py-0.5 text-xs font-semibold capitalize">
+          {batch.status}
+        </span>
+      ),
+    },
+
     {
       key: "createdAt",
       header: "Created At",

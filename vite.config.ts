@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    host: true,
+    allowedHosts: ['8e48-180-248-17-184.ngrok-free.app'],
+  },
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

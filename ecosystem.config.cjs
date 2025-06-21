@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 dotenv.config({ path: './.env.production' })
 
-export default {
+module.exports = {
   apps: [
     {
       name: "carabao-product-check-fe",

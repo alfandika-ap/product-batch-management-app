@@ -24,9 +24,9 @@ import {
   Shield,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import QRScanner from "./components/qr-scanner";
 import { useProductScan } from "./hooks/use-product-scan";
-import { useSearchParams } from "react-router";
 
 function ProductScanForm() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -79,39 +79,6 @@ function ProductScanForm() {
   const handleQRScanResult = (result: string) => {
     setQrCode(result);
     setShowQRScanner(false);
-  };
-
-  const getStatusBadge = (status: string) => {
-    const statusConfig = {
-      verified: {
-        className: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-        dotColor: "bg-emerald-500",
-        text: "Verified",
-      },
-      pending: {
-        className: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-        dotColor: "bg-yellow-500",
-        text: "Pending",
-      },
-      invalid: {
-        className: "bg-red-500/20 text-red-400 border-red-500/30",
-        dotColor: "bg-red-500",
-        text: "Invalid",
-      },
-    };
-
-    const config =
-      statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
-
-    return (
-      <Badge
-        variant="outline"
-        className={`flex items-center gap-1 ${config.className}`}
-      >
-        <div className={`w-2 h-2 rounded-full ${config.dotColor}`}></div>
-        {config.text}
-      </Badge>
-    );
   };
 
   return (

@@ -1,7 +1,7 @@
 import type { Pagination } from "./request.types";
 
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   category: string;
   imageUrl?: string;

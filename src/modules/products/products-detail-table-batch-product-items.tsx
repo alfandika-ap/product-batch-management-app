@@ -1,5 +1,4 @@
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -10,15 +9,16 @@ import {
 } from "@/components/ui/card";
 import { DataTable, type ColumnDef } from "@/components/ui/data-table";
 import type { BatchProductItem } from "@/types/batch.types";
-import { AlertCircle, Download } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { useGetBatchProductItems } from "./hooks/use-batch";
+import ButtonDownloadBatches from "./components/button-download-batches";
 import ModalQrDetail from "./components/modal-qr-detail";
+import { useGetBatchProductItems } from "./hooks/use-batch";
 
 function ProductsDetailTableBatchProductItems({
   batchId,
 }: {
-  batchId: number;
+  batchId: string;
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
@@ -31,9 +31,13 @@ function ProductsDetailTableBatchProductItems({
 
   const columns: ColumnDef<BatchProductItem>[] = [
     {
-      key: "id",
-      header: "ID",
-      className: "w-16",
+      key: "itemOrder",
+      header: "Order",
+      cell: (batch) => (
+        <span className="inline-flex items-center rounded-md border bg-secondary text-secondary-foreground px-2.5 py-0.5 text-xs font-semibold capitalize">
+          {batch.itemOrder}
+        </span>
+      ),
     },
     {
       key: "qrCode",
@@ -64,16 +68,6 @@ function ProductsDetailTableBatchProductItems({
         </div>
       ),
     },
-    {
-      key: "status",
-      header: "Status",
-      cell: (batch) => (
-        <span className="inline-flex items-center rounded-md border bg-secondary text-secondary-foreground px-2.5 py-0.5 text-xs font-semibold capitalize">
-          {batch.status}
-        </span>
-      ),
-    },
-
     {
       key: "createdAt",
       header: "Created At",
@@ -120,10 +114,7 @@ function ProductsDetailTableBatchProductItems({
           <span className="font-bold">{batchId}</span>
         </CardDescription>
         <CardAction>
-          <Button variant="outline">
-            <Download />
-            Download Batch QR Code
-          </Button>
+          <ButtonDownloadBatches />
         </CardAction>
       </CardHeader>
       <CardContent>

@@ -16,6 +16,7 @@ export type BatchProductItem = {
   serialNumber: string;
   status: string;
   firstScanAt: string | null;
+  itemOrder: number;
   scanCount: number;
   createdAt: string;
 }
@@ -28,4 +29,28 @@ export interface BatchesResponse {
 export interface BatchProductItemsResponse {
   items: BatchProductItem[];
   pagination: Pagination;
+}
+
+export interface CreateBatchRequest {
+  product_id: string;
+  batch_code: string;
+  quantity: number;
+}
+
+export interface BatchProgressResponse {
+  total: number;
+  waiting: number;
+  active: number;
+  completed: number;
+  failed: number;
+  totalInsert: number;
+  qty: number;
+  progressPercentage: number;
+  isCompleted: boolean;
+}
+
+export interface DownloadBatchZipResponse {
+  downloadUrl: string;
+  expiresIn: string;
+  instructions: string;
 }

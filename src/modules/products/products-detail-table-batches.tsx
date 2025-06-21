@@ -1,5 +1,4 @@
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -10,13 +9,14 @@ import {
 } from "@/components/ui/card";
 import { DataTable, type ColumnDef } from "@/components/ui/data-table";
 import type { Batch } from "@/types/batch.types";
-import { AlertCircle, Plus } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
+import ButtonModalCreateBatch from "./components/button-modal-create-batch";
 import { useGetProductBatches } from "./hooks/use-batch";
 import { useGetProduct } from "./hooks/use-product";
 
-function ProductsDetailTableBatches({ productId }: { productId: number }) {
+function ProductsDetailTableBatches({ productId }: { productId: string }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
   const { data: product } = useGetProduct({ id: productId.toString() });
@@ -32,8 +32,12 @@ function ProductsDetailTableBatches({ productId }: { productId: number }) {
   const columns: ColumnDef<Batch>[] = [
     {
       key: "id",
-      header: "ID",
-      className: "w-16",
+      header: "No",
+      cell: (batch: Batch) => {
+        const index = batches.findIndex((p) => p.id === batch.id);
+        const rowNumber = (currentPage - 1) * pageSize + index + 1;
+        return <p>{rowNumber}</p>;
+      },
     },
     {
       key: "batchCode",
@@ -110,10 +114,7 @@ function ProductsDetailTableBatches({ productId }: { productId: number }) {
           <span className="font-bold">{product?.data?.data.name}</span>
         </CardDescription>
         <CardAction>
-          <Button variant="outline">
-            <Plus />
-            Create Batch
-          </Button>
+          <ButtonModalCreateBatch />
         </CardAction>
       </CardHeader>
       <CardContent>

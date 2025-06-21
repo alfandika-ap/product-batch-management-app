@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/products/:id",
+        path: "/products/:productId",
         element: (
           <DashboardLayout>
             <ProductDetailPage />
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/products/:id/batches/:batchId",
+        path: "/products/:productId/batches/:batchId",
         element: (
           <DashboardLayout>
             <BatchDetailPage />

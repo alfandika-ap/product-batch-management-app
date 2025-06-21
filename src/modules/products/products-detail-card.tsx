@@ -158,7 +158,7 @@ function ProductsDetailCard({ id }: { id: string }) {
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+              className="w-full  transition-transform duration-300 hover:scale-105"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
                 e.currentTarget.nextElementSibling?.classList.remove("hidden");

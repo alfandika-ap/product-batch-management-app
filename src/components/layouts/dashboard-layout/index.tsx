@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from "react";
+import { Fragment, useMemo, type ReactNode } from "react";
 
 import { AppSidebar } from "./components/app-sidebar";
 import {
@@ -22,20 +22,20 @@ type DashboardLayoutProps = {
 };
 
 function DashboardLayout({ children }: DashboardLayoutProps) {
-  const { id, batchId } = useParams();
+  const { productId, batchId } = useParams();
 
   const breadcrumb = useMemo(() => {
-    if (id && batchId) {
+    if (productId && batchId) {
       return [
-        { label: "Product", href: `/products/${id}` },
-        { label: "Batch", href: `/products/${id}/batches/${batchId}` },
+        { label: "Product", href: `/products/${productId}` },
+        { label: "Batch", href: `/products/${productId}/batches/${batchId}` },
       ];
     }
-    if (id) {
-      return [{ label: "Product", href: `/products/${id}` }];
+    if (productId) {
+      return [{ label: "Product", href: `/products/${productId}` }];
     }
     return [{ label: "Dashboard", href: "/" }];
-  }, [id, batchId]);
+  }, [productId, batchId]);
 
   return (
     <SidebarProvider>
@@ -57,7 +57,7 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 {breadcrumb.map((item, index) => (
-                  <>
+                  <Fragment key={index}>
                     <BreadcrumbItem key={index}>
                       <BreadcrumbPage>
                         <Link to={item.href}>{item.label}</Link>
@@ -66,7 +66,7 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
                     {index < breadcrumb.length - 1 && (
                       <BreadcrumbSeparator className="hidden md:block" />
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </BreadcrumbList>
             </Breadcrumb>

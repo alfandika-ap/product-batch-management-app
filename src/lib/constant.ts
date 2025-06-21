@@ -18,6 +18,8 @@ export const API_BATCH_ROUTES = {
   CREATE_BATCH: "/batches",
   UPDATE_BATCH: "/batches/:id",
   DELETE_BATCH: "/batches/:id",
+  GET_BATCH_PROGRESS: "/batches/:id/progress",
+  DOWNLOAD_BATCH_ZIP: "/batches/:id/download",
 }
 
 export const API_PRODUCT_SCAN_ROUTES = {

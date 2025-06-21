@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 function BatchDetailPage() {
   const { batchId } = useParams();
-  return <ProductsDetailTableBatchProductItems batchId={Number(batchId)} />;
+  return <ProductsDetailTableBatchProductItems batchId={batchId!} />;
 }
 
 export default BatchDetailPage;

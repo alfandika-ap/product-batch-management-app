@@ -29,8 +29,12 @@ function ProductsTable() {
   const columns: ColumnDef<Product>[] = [
     {
       key: "id",
-      header: "ID",
-      className: "w-16",
+      header: "No",
+      cell: (product: Product) => {
+        const index = products.findIndex((p) => p.id === product.id);
+        const rowNumber = (currentPage - 1) * pageSize + index + 1;
+        return <p>{rowNumber}</p>;
+      },
     },
     {
       key: "name",

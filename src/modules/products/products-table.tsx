@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/card";
 import { DataTable, type ColumnDef } from "@/components/ui/data-table";
 import type { Product } from "@/types/product.types";
-import { AlertCircle, Plus } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { useState } from "react";
-import { useGetProducts } from "./hooks/use-product";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
+import ButtonModalCreateProduct from "./components/button-modal-create-product";
+import { useGetProducts } from "./hooks/use-product";
 
 function ProductsTable() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,10 +106,7 @@ function ProductsTable() {
         <CardTitle>Products Management</CardTitle>
         <CardDescription>Manage your products here.</CardDescription>
         <CardAction>
-          <Button variant="outline">
-            <Plus />
-            Create Product
-          </Button>
+          <ButtonModalCreateProduct />
         </CardAction>
       </CardHeader>
       <CardContent>

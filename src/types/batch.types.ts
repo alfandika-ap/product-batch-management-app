@@ -1,8 +1,8 @@
 import type { Pagination } from "./request.types";
 
 export type Batch = {
-  id: number;
-  productId: number;
+  id: string;
+  productId: string;
   batchCode: string;
   quantity: number;
   createdAt: string;
@@ -10,7 +10,7 @@ export type Batch = {
 };
 
 export type BatchProductItem = {
-  id: number;
+  id: string;
   batchId: number;
   qrCode: string;
   serialNumber: string;

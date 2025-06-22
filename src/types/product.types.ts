@@ -9,6 +9,8 @@ export interface Product {
   createdAt: string;
 }
 
+export type CreateProductRequest = Omit<Product, "id" | "createdAt">;
+
 export interface ProductsResponse {
   products: Product[];
   pagination: Pagination;

@@ -32,16 +32,6 @@ function ButtonDownloadBatches() {
 
   const handleDownloadBatchZip = () => {
     downloadBatchZip();
-    // downloadBatchZip({
-    //   onSuccess: (data) => {
-    //     const url = window.URL.createObjectURL(data);
-    //     const a = document.createElement("a");
-    //     a.href = url;
-    //     a.download = "batch.zip";
-    //     a.click();
-    //     window.URL.revokeObjectURL(url);
-    //   },
-    // });
   };
 
   const progressData = batchProgress?.data?.data;

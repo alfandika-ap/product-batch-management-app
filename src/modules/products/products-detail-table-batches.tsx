@@ -15,6 +15,7 @@ import { Link } from "react-router";
 import ButtonModalCreateBatch from "./components/button-modal-create-batch";
 import { useGetProductBatches } from "./hooks/use-batch";
 import { useGetProduct } from "./hooks/use-product";
+import ButtonDeleteBatch from "./components/button-delete-batch";
 
 function ProductsDetailTableBatches({ productId }: { productId: string }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,6 +81,11 @@ function ProductsDetailTableBatches({ productId }: { productId: string }) {
           })}
         </span>
       ),
+    },
+    {
+      key: "action",
+      header: "Action",
+      cell: (batch) => <ButtonDeleteBatch batch={batch} />,
     },
   ];
 

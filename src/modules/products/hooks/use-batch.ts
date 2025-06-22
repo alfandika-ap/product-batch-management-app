@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "@/lib/api/axios";
 import { API_BATCH_ROUTES } from "@/lib/constant";
 import type { BatchesResponse, BatchProductItemsResponse, BatchProgressResponse, CreateBatchRequest, DownloadBatchZipResponse } from "@/types/batch.types";
@@ -56,7 +56,7 @@ export const useGetBatchProgress = (params: { batchId: string }) => {
 export const useDownloadBatchZip = (params: { batchId: string }) => {
   return useMutation({
     mutationFn: () => api.post<RequestResponse<DownloadBatchZipResponse>>(API_BATCH_ROUTES.DOWNLOAD_BATCH_ZIP.replace(":id", params.batchId.toString())),
-    onSuccess: (data, batchId) => {
+    onSuccess: (data) => {
       const url = data.data.data.downloadUrl;
       axios.get(url, {
         responseType: "blob",
@@ -65,7 +65,7 @@ export const useDownloadBatchZip = (params: { batchId: string }) => {
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = `batch-${batchId}-qrcodes.zip`;
+        link.download = `batch-${params.batchId}-qrcodes.zip`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -75,6 +75,20 @@ export const useDownloadBatchZip = (params: { batchId: string }) => {
     },
     onError: (error: any) => {
       toast.error(error.response?.data?.message || "Gagal download file");
+    },
+  });
+};
+
+export const useDeleteBatch = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (batchId: string) => api.delete(API_BATCH_ROUTES.DELETE_BATCH.replace(":id", batchId.toString())),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["batches"] });
+      toast.success("Batch berhasil dihapus!");
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.message || "Gagal menghapus batch");
     },
   });
 };

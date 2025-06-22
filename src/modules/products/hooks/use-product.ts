@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { API_PRODUCT_ROUTES } from "@/lib/constant";
 import api from "@/lib/api/axios";
-import type { Product, ProductsResponse } from "@/types/product.types";
+import { API_PRODUCT_ROUTES } from "@/lib/constant";
+import type { CreateProductRequest, Product, ProductsResponse } from "@/types/product.types";
 import type { RequestResponse } from "@/types/request.types";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 type UseGetProductsProps = {
   params: {
@@ -34,5 +34,11 @@ export const useGetProduct = ({ id }: { id: string }) => {
       api.get<RequestResponse<Product>>(
         API_PRODUCT_ROUTES.GET_PRODUCT.replace(":id", id)
       ),
+  });
+};
+
+export const useCreateProduct = () => {
+  return useMutation({
+    mutationFn: (data: CreateProductRequest) => api.post(API_PRODUCT_ROUTES.CREATE_PRODUCT, data)
   });
 };

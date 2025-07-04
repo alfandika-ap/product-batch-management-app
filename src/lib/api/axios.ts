@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from '../store/auth.store'
 import { getToken } from '../services/token.service'
 
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+const baseURL = import.meta.env.VITE_API_URL || 'https://api-check.carabaopro.com/api/v1'
 
 export const api = axios.create({
   baseURL,

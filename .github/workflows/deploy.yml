@@ -35,7 +35,7 @@ jobs:
 
       - name: Upload to VPS
         env:
-          DEPLOY_PATH: /home/carabaopro-product-check-fe/htdocs/product-check.carabaopro.com
+          DEPLOY_PATH: /home/product-check-carabaopro/htdocs/product-check.carabaopro.com
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           SSH_PASS: ${{ secrets.SSH_PASS }}
@@ -54,7 +54,7 @@ jobs:
           SSH_PASS: ${{ secrets.SSH_PASS }}
         run: |
           sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "
-            cd /home/carabaopro-product-check-fe/htdocs/product-check.carabaopro.com && \
+            cd /home/product-check-carabaopro/htdocs/product-check.carabaopro.com && \
             source ~/.bashrc && \
             bun install && \
             /usr/local/lib/node_modules/pm2/bin/pm2 delete carabao-product-check-fe || true && \

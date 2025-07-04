@@ -13,7 +13,7 @@ export default defineConfig({
   preview: {
     host: true,
     port: 4173,
-    allowedHosts: ['https://product-check.carabaopro.com/'],
+    allowedHosts: ['product-check.carabaopro.com'],
   },
   plugins: [react(), tailwindcss()],
   resolve: {

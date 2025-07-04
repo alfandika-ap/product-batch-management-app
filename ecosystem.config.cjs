@@ -7,7 +7,7 @@ module.exports = {
       name: "carabao-product-check-fe",
       script: "bun",
       args: "run preview",
-      cwd: "/home/carabaopro-product-check-fe/htdocs/product-check.carabaopro.com",
+      cwd: "/home/product-check-carabaopro/htdocs/product-check.carabaopro.com ",
       env: {
         NODE_ENV: "production",
         HOST: process.env.HOST,

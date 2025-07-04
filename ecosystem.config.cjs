@@ -10,8 +10,9 @@ module.exports = {
       cwd: "/home/product-check-carabaopro/htdocs/product-check.carabaopro.com",
       env: {
         NODE_ENV: "production",
-        HOST: "0.0.0.0",
-        PORT: "4173"
+        VITE_API_URL: process.env.VITE_API_URL,
+        HOST: process.env.HOST || "0.0.0.0",
+        PORT: process.env.PORT || "4173"
       },
       log_file: "./logs/combined.log",
       out_file: "./logs/out.log",

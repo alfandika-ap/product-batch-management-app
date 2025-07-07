@@ -33,7 +33,7 @@ function ProductScanForm() {
   const qrCodeParam = searchParams.get("qrCode");
   const [qrCode, setQrCode] = useState("");
   const [serialNumber, setSerialNumber] = useState("");
-  const [scanMode] = useState<"qr" | "serial">("qr");
+  const [scanMode] = useState<"qr" | "serial">("serial");
   const [showQRScanner, setShowQRScanner] = useState(false);
 
   const {

@@ -92,6 +92,10 @@ function ButtonModalCreateBatch() {
                     value: 3,
                     message: "Batch code must be at least 3 characters",
                   },
+                  pattern: {
+                    value: /^[a-zA-Z0-9]+$/,
+                    message: "Batch code must contain only letters and numbers",
+                  },
                   disabled: isPending,
                 })}
                 className={errors.batch_code ? "border-red-500" : ""}
